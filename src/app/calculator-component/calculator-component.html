@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="calculator">
+    <div class="result">
+      <div class="last-operation">{{lastOperation$ | async}}</div>
+      <div class="current-input" #currentInput>{{currentInput$ | async}}</div>
+    </div>
+    @for (rows of buttons; track rows){
+      @for (btn of rows; track btn){
+        <button id="{{btn.value}}"
+                class="button"
+                (click)="onButtonClick(btn)"
+                [ngClass]="['button', btn.type, btn.value === activeKey ? 'active' : '']"
+        >
+          {{btn.label}}
+        </button>
+      }
+    }
+  </div>
+</div>
