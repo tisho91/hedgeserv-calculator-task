@@ -15,6 +15,8 @@ const errorStates: string[] = ['Infinity', '-Infinity', 'ERROR']
 export class CalculatorService {
 
   private tokens$ = new BehaviorSubject<string[]>([]);
+  public history$ = new BehaviorSubject<string[][]>([]);
+
   private isResultState: boolean = false;
 
   public currentInput$ = this.tokens$.asObservable().pipe(
@@ -22,6 +24,24 @@ export class CalculatorService {
   );
 
   public lastOperation$ = new BehaviorSubject<string>('');
+
+  private addToHistory(tokens: string[]) {
+    const history = this.history$.value;
+    this.history$.next([...history, [...tokens]]);
+  }
+
+  loadFromHistory(index: number) {
+    const history = this.history$.value;
+    const tokens = history[index];
+    if (tokens) {
+      this.tokens$.next([...tokens]);
+    }
+  }
+
+  get history() {
+    return this.history$.asObservable();
+  }
+
 
   handleInput(input: string | Operation) {
     if (typeof input === 'string' && /^[0-9]$/.test(input)) {
@@ -153,9 +173,9 @@ export class CalculatorService {
     try {
       const displayExpr =  this.tokens$.value.join('');
       const expr = displayExpr.replace(/×/g, '*').replace(/÷/g, '/');
-      console.log(expr);
       const result = math.evaluate(expr);
       this.lastOperation$.next(displayExpr);
+      this.addToHistory(this.tokens$.value);
       this.tokens$.next([result.toString()]);
     } catch (e) {
       this.tokens$.next(['ERROR']);

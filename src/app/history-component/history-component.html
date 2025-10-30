@@ -1,0 +1,17 @@
+<div class="wrapper">
+<div class="history-wrapper">
+  @if ((history$ | async)?.length) {
+    <div class="history-list">
+    @for ( item of (history$ | async); track item; let index = $index){
+      <div class="history-item"
+           (click)="loadHistoryItem(index)"
+      >
+        {{item.join('')}}
+      </div>
+    }
+    </div>
+  } @else {
+    <p class="empty">No history yet</p>
+  }
+</div>
+</div>

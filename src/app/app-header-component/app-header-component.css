@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 4px;
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+  }
+
+  .history-btn {
+    background: #e0e0e0;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    &:hover {
+      background: #ccc;
+    }
+  }
+}

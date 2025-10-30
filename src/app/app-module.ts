@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { CalculatorComponent } from './calculator-component/calculator-component';
+import {AppHeaderComponent} from './app-header-component/app-header-component';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -19,3 +20,4 @@ import { CalculatorComponent } from './calculator-component/calculator-component
   bootstrap: [App]
 })
 export class AppModule { }
+

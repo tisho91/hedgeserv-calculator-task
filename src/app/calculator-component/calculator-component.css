@@ -1,13 +1,4 @@
-.wrapper{
-  display: flex;
-  justify-content: center;
-}
-
 .calculator {
-  background: linear-gradient(145deg, #f0f0f0, #dcdcdc);
-  padding: 10px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   display: grid;
   grid-template-columns: repeat(4, 80px);
   grid-template-rows: repeat(6, 80px);

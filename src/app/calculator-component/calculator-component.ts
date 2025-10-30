@@ -2,8 +2,9 @@ import {AfterViewInit, Component, ElementRef, HostListener, OnInit, viewChild, V
 import {AsyncPipe, NgClass} from '@angular/common';
 import {CalculatorService} from '../services/calculator-service';
 import {Button, Operation} from '../types';
-import { Observable } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {calculatorButtons, keyboardMap} from '../utils';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {calculatorButtons, keyboardMap} from '../utils';
   styleUrl: './calculator-component.css',
   imports: [
     NgClass,
-    AsyncPipe
+    AsyncPipe,
   ]
 })
 export class CalculatorComponent implements AfterViewInit  {
@@ -22,6 +23,7 @@ export class CalculatorComponent implements AfterViewInit  {
   currentInput$: Observable<string>;
   lastOperation$: Observable<string>;
   activeKey: string | number | Operation | null = null;
+  private currentInputSubscription!: Subscription;
 
 
   constructor(private calculatorService: CalculatorService) {
@@ -52,12 +54,15 @@ export class CalculatorComponent implements AfterViewInit  {
 
 
   ngAfterViewInit() {
-    this.currentInput$.subscribe(() => {
+    this.currentInputSubscription = this.currentInput$.subscribe(() => {
       const el = this.currentInputEl.nativeElement;
       setTimeout(()=>{
         el.scrollLeft = el.scrollWidth;
       },10)
-
     });
+  }
+
+  ngOnDestroy() {
+    this.currentInputSubscription.unsubscribe();
   }
 }

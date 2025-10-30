@@ -1,4 +1,13 @@
 * {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   box-sizing: border-box;
+
+}
+.wrapper{
+  width: 350px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #f0f0f0, #dcdcdc);
+  padding: 10px;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
