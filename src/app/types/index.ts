@@ -6,7 +6,7 @@ export enum Operation {
   DIVIDE = '÷',
 
   CLEAR = 'CLEAR',
-  REMOVE_LAST = 'REMOVE_LAST',
+  BACKSPACE = 'BACKSPACE',
   TOGGLE_SIGN = 'TOGGLE_SIGN',
   PERCENTAGE = '%',
   DECIMAL = '.',

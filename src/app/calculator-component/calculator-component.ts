@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, viewChild, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 import {AsyncPipe, NgClass} from '@angular/common';
 import {CalculatorService} from '../services/calculator-service';
 import {Button, Operation} from '../types';
 import {Observable, Subscription} from 'rxjs';
 import {calculatorButtons, keyboardMap} from '../utils';
-import {RouterLink} from '@angular/router';
 
 
 @Component({

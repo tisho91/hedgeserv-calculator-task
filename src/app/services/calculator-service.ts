@@ -69,7 +69,7 @@ export class CalculatorService {
         case Operation.CLEAR:
           this.clear();
           break;
-        case Operation.REMOVE_LAST:
+        case Operation.BACKSPACE:
           this.backspace();
           break;
       }

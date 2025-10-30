@@ -17,16 +17,17 @@ export const keyboardMap: Record<string, Operation | string> = {
   '/': Operation.DIVIDE,
   'Enter': Operation.EQUAL,
   '=': Operation.EQUAL,
-  'Backspace': Operation.REMOVE_LAST,
+  'Backspace': Operation.BACKSPACE,
   'c': Operation.CLEAR,
-  '.': Operation.DECIMAL
+  '.': Operation.DECIMAL,
+  '%': Operation.PERCENTAGE
 };
 
 
 export const calculatorButtons: Button[][]  = [
   [{
     label: '⌫',
-    value: Operation.REMOVE_LAST,
+    value: Operation.BACKSPACE,
     type: 'operator',
   }, {
     label: 'AC', type: 'operator', value: Operation.CLEAR
